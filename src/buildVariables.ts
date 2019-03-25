@@ -49,6 +49,9 @@ const buildGetListVariables = (introspectionResults: IntrospectionResult) => (
       const inputField = type.inputFields.find(t => t.name === key);
 
       if (!!inputField) {
+        if (/_in/.test(key)) {
+          return { ...acc, [key]: params.filter[key] };
+        }
         return {
           ...acc,
           [key]: { id_in: params.filter[key] }
@@ -150,12 +153,12 @@ const buildReferenceField = ({
   field,
   mutationType
 }: {
-  inputArg: { [key: string]: any };
-  introspectionResults: IntrospectionResult;
-  typeName: string;
-  field: string;
-  mutationType: string;
-}) => {
+    inputArg: { [key: string]: any };
+    introspectionResults: IntrospectionResult;
+    typeName: string;
+    field: string;
+    mutationType: string;
+  }) => {
   const inputType = findInputFieldForType(
     introspectionResults,
     typeName,
