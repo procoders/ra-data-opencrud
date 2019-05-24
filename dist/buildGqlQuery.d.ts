@@ -5,7 +5,7 @@ export interface Query {
     args: IntrospectionField[];
 }
 export declare const buildFields: (introspectionResults: IntrospectionResult) => (fields: IntrospectionField[]) => FieldNode[];
-export declare const getArgType: (arg: IntrospectionField) => import("graphql/language/ast").TypeNode;
+export declare const getArgType: (arg: IntrospectionField) => import("graphql").TypeNode;
 export declare const buildArgs: (query: Query, variables?: {
     [key: string]: any;
 }) => ArgumentNode[];

@@ -1,6 +1,6 @@
 import { ApolloClient, ApolloClientOptions } from 'apollo-client';
-export declare const buildQuery: (introspectionResults: import("./constants/interfaces").IntrospectionResult) => (aorFetchType: string, resourceName: string, params: any, fragment: import("graphql/language/ast").DocumentNode) => {
-    query: import("graphql/language/ast").DocumentNode;
+export declare const buildQuery: (introspectionResults: import("./constants/interfaces").IntrospectionResult) => (aorFetchType: string, resourceName: string, params: any, fragment: import("graphql").DocumentNode) => {
+    query: import("graphql").DocumentNode;
     variables: {
         [key: string]: any;
     };

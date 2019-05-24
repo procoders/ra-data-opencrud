@@ -145,6 +145,9 @@ var buildCreateVariables = function (introspectionResults) { return function (re
     return Object.keys(params.data).reduce(function (acc, key) {
         var _a, _b, _c, _d, _e;
         if (Array.isArray(params.data[key])) {
+            if (key.endsWith('Ids')) {
+                key = key.substr(0, key.length - 3);
+            }
             if (!inputFieldExistsForType(introspectionResults, resource.type.name + "CreateInput", key)) {
                 return acc;
             }

@@ -153,12 +153,12 @@ const buildReferenceField = ({
   field,
   mutationType
 }: {
-    inputArg: { [key: string]: any };
-    introspectionResults: IntrospectionResult;
-    typeName: string;
-    field: string;
-    mutationType: string;
-  }) => {
+  inputArg: { [key: string]: any };
+  introspectionResults: IntrospectionResult;
+  typeName: string;
+  field: string;
+  mutationType: string;
+}) => {
   const inputType = findInputFieldForType(
     introspectionResults,
     typeName,
@@ -295,6 +295,9 @@ const buildCreateVariables = (introspectionResults: IntrospectionResult) => (
   Object.keys(params.data).reduce(
     (acc, key) => {
       if (Array.isArray(params.data[key])) {
+        if (key.endsWith('Ids')) {
+          key = key.substr(0, key.length - 3);
+        }
         if (
           !inputFieldExistsForType(
             introspectionResults,
